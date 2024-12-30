@@ -190,14 +190,22 @@ input:focus {
     cursor: pointer;
 }
 
+#resultado {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    row-gap: 1rem;
+}
+
 .intercambio {
     width: fit-content;
     padding: 3rem 1.5rem;
     border-radius: 2.5rem;
-    background-color: var(--primario);
     color: var(--blanco);
     box-shadow: 0 1rem 3rem rgb(1 1 1 / 13%);
 }
+
+.intercambio:hover { background-color: var(--primario); }
 
 .tarjeta {
     display: flex;

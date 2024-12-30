@@ -2,6 +2,7 @@
 const formulario = document.querySelector('.formulario')
 const moderador = document.querySelector('#moderador');
 const participanteContenedor = document.querySelector('#participantes');
+const resultado = document.querySelector('#resultado');
 const continuar = document.querySelector('#continuar');
 const intercambiar = document.querySelector('#intercambiar');
 const moderadorTarjeta = document.querySelector('.moderador-tarjeta');
@@ -188,6 +189,8 @@ function formarGrupos(participantes) {
     const asignaciones = [];
 
     while (dar.length > 0) {
+        let i = 1;
+        console.log(i + 1)
         // Seleccionamos aleatoriamente quién dará y quién recibirá
         let darIndex = Math.floor(Math.random() * dar.length);
         let recibirIndex = Math.floor(Math.random() * recibir.length);
@@ -199,6 +202,22 @@ function formarGrupos(participantes) {
 
         // Realizamos la asignación
         asignaciones.push({ da: dar[darIndex], recibe: recibir[recibirIndex] });
+
+        const tarjeta = document.createElement('DIV');
+        tarjeta.classList.add('intercambio')
+        tarjeta.innerHTML = `
+                <h2>Intercambio</h2>
+
+                <div class="tarjeta">
+                    <p>${dar[darIndex]}</p>
+
+                    <svg xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="currentColor"  stroke-linecap="round" stroke-linejoin="round" width="24" height="24"  stroke-width="1.5"> <path d="M12 11v10"></path> <path d="M9 18l3 3l3 -3"></path> <path d="M12 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path> </svg> 
+
+                    <p>${recibir[recibirIndex]}</p>
+                </div>
+        `;
+
+        resultado.appendChild(tarjeta);
 
         // Eliminar los participantes que ya han sido asignados
         dar.splice(darIndex, 1);
