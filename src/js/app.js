@@ -161,16 +161,6 @@ function guardarParticipantes(e) {
 
     console.log(participantes);
 
-    const alerta = document.createElement('P');
-    alerta.classList.add('alerta', 'exito');
-    alerta.innerText = 'Guardado correctamente';
-
-    formulario.appendChild(alerta);
-
-    setTimeout(() => {
-        alerta.remove();
-    }, 3000);
-
     // Formar los grupos y obtener las asignaciones
     const resultado = formarGrupos(participantes);
 
