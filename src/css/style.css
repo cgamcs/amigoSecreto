@@ -147,7 +147,15 @@ input:focus {
 
 .contenedor {
     margin: 0 auto;
-    width: min(50%, 120rem);
+    width: min(90%, 120rem);
+}
+
+@media (min-width: 768px) {
+    .contenedor { width: min(50%, 120rem); }
+}
+
+@media (min-width: 1440px) {
+    .contenedor { width: min(30%, 120rem); }
 }
 
 .header {
@@ -169,10 +177,17 @@ input:focus {
     display: flex;
     gap: 1.5rem;
     flex-direction: column;
-    width: 60%;
+    width: 80%;
     box-shadow: 0 1rem 3rem rgb(1 1 1 / 13%);
     padding: 3rem;
     border-radius: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .moderador-tarjeta,
+    .participantes-tarjeta {
+        width: 60%;
+    }
 }
 
 .moderador,
@@ -192,9 +207,17 @@ input:focus {
 
 #resultado {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    row-gap: 1rem;
+    gap: 2rem 1rem;
+    margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+    #resultado {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }    
 }
 
 .intercambio {
@@ -203,9 +226,10 @@ input:focus {
     border-radius: 2.5rem;
     color: var(--blanco);
     box-shadow: 0 1rem 3rem rgb(1 1 1 / 13%);
+    cursor: pointer;
 }
 
-.intercambio:hover { background-color: var(--primario); }
+.intercambio:active { background-color: var(--primario); }
 
 .tarjeta {
     display: flex;
