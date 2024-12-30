@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Intercambio Secreto</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Amigo Misterioso</h1>
+    </header>
+
+    <main class="contenedor">
+        <div class="formulario">
+            <div class="moderador-tarjeta">
+                <div class="moderador">
+                    <label for="">¿Cuál es tu nombre?</label>
+                    <input id="moderador" type="text" placeholder="Escriba su nombre">
+                </div>
+    
+                <div class="boton">
+                    <button id="continuar">Continuar</button>
+                </div>
+            </div>
+
+            <div class="participantes-tarjeta hidden">
+                <div id="participantes">
+                    <label for="">¿Quienes son los participantes?</label>
+                </div>
+
+                <div class="boton">
+                    <button id="intercambiar">Intercambiar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultado">
+            <div class="intercambio">
+                <h2>Intercambio 1</h2>
+
+                <div class="tarjeta">
+                    <p>César</p>
+
+                    <svg xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="currentColor"  stroke-linecap="round" stroke-linejoin="round" width="24" height="24"  stroke-width="1"> <path d="M12 11v10"></path> <path d="M9 18l3 3l3 -3"></path> <path d="M12 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path> </svg> 
+
+                    <p>Diego</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/src/js/app.js"></script>
+</body>
+</html>
