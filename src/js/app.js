@@ -1,4 +1,5 @@
 // Variables
+const formulario = document.querySelector('.formulario')
 const moderador = document.querySelector('#moderador');
 const participanteContenedor = document.querySelector('#participantes');
 const continuar = document.querySelector('#continuar');
@@ -112,10 +113,8 @@ function agregarNuevoInput(indice) {
 function borrarContenido(e) {
     const participanteId = e.target.getAttribute('data-id');
     const input = e.target.closest('.participantes-input').querySelector('input');
+    const valor = input.value.trim();
     const div = e.target.closest('.participantes-input');
-    const participantes = e.target.closest('#participantes')
-
-    console.log(participantes);
 
     if(participanteId <= 3) {
         input.value = '';
@@ -123,7 +122,10 @@ function borrarContenido(e) {
         div.remove();
     }
 
-    console.log(participanteId);
+    // Ahora, eliminamos el participante del arreglo de participantes
+    participantes = participantes.filter(participante => participante.nombre !== valor); // Filtramos el arreglo para remover el participante con ese ID
+
+    console.log(participantes)
 }
 
 function guardarParticipantes(e) {
@@ -134,19 +136,75 @@ function guardarParticipantes(e) {
     // Convierte los inputs en un array para asegurar compatibilidad al usar forEach con índice
     Array.from(inputs).forEach((input, index) => {
         if (input.value.trim() !== '') { // Verifica que el input no esté vacío
-            const infoIntercambio = {
-                nombre: input.value.trim()
-            };
+            const nombre = input.value.trim();
 
-            if (participantes[index]) {
-                // Si el índice ya existe en el array, actualiza el objeto
-                participantes[index] = infoIntercambio;
-            } else {
-                // Si el índice no existe, agrega el objeto al array
-                participantes = [...participantes, infoIntercambio];
+            // Verifica que el input no esté vacío
+            if (nombre !== '') {
+                const infoIntercambio = {
+                    nombre: nombre,
+                    id: index + 1 // Usamos el índice como ID para el participante
+                };
+    
+                // Si el participante ya existe en el arreglo, actualizamos el nombre
+                const participanteExistente = participantes.find(participante => participante.id === infoIntercambio.id);
+                if (participanteExistente) {
+                    // Si ya existe, solo actualizamos el nombre
+                    participanteExistente.nombre = infoIntercambio.nombre;
+                } else {
+                    // Si no existe, lo agregamos al arreglo
+                    participantes = [...participantes, infoIntercambio];
+                }
             }
         }
     });
-    
-    console.log(participantes)
+
+    console.log(participantes);
+
+    const alerta = document.createElement('P');
+    alerta.classList.add('alerta', 'exito');
+    alerta.innerText = 'Guardado correctamente';
+
+    formulario.appendChild(alerta);
+
+    setTimeout(() => {
+        alerta.remove();
+    }, 3000);
+
+    formarGrupos(participantes);
+
+    const resultado = formarGrupos(participantes);
+    console.log("Asignación de regalos:", resultado);
+}
+
+function formarGrupos(participantes) {
+    // Almacenamos los nombres de los participantes
+    let nombres = participantes.map(participante => participante.nombre);
+
+    // Mezclamos aleatoriamente los participantes para la asignación de los regalos
+    const dar = [...nombres];  // Los que van a dar el regalo
+    const recibir = [...nombres];  // Los que van a recibir el regalo
+
+    // Aseguramos que no sea el mismo participante (no se pueden dar regalos a sí mismos)
+    const asignaciones = [];
+
+    while (dar.length > 0) {
+        // Seleccionamos aleatoriamente quién dará y quién recibirá
+        let darIndex = Math.floor(Math.random() * dar.length);
+        let recibirIndex = Math.floor(Math.random() * recibir.length);
+
+        // Aseguramos que no sea el mismo participante (no se pueden dar regalos a sí mismos)
+        while (dar[darIndex] === recibir[recibirIndex]) {
+            recibirIndex = Math.floor(Math.random() * recibir.length);
+        }
+
+        // Realizamos la asignación
+        asignaciones.push({ da: dar[darIndex], recibe: recibir[recibirIndex] });
+
+        // Eliminar los participantes que ya han sido asignados
+        dar.splice(darIndex, 1);
+        recibir.splice(recibirIndex, 1);
+    }
+
+    // Mostrar las asignaciones de regalos
+    return asignaciones;
 }

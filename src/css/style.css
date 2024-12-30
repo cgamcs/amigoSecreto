@@ -5,12 +5,13 @@
     --ff: "Roboto", serif;
     
     /* Colores */
-    --primario: #F06292;
+    --primario: #D30F45;
     --primarioOscuro: #707E85;
     --secundario: #F50057;
     --gris: #E9EBEF;
     --blanco: #FFF;
     --negro: #101219;
+    --verde: #94d388;
 
     /* landing page */
     --h1: bold 4rem/1em var(--ff);
@@ -132,6 +133,18 @@ input:focus {
     outline: none;
 }
 
+.alerta {
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: var(--blanco);
+    margin-top: 1rem;
+}
+
+.exito {
+    background-color: var(--verde);
+}
+
 .contenedor {
     margin: 0 auto;
     width: min(50%, 120rem);
@@ -179,7 +192,7 @@ input:focus {
 
 .intercambio {
     width: fit-content;
-    padding: 1.5rem;
+    padding: 3rem 1.5rem;
     border-radius: 2.5rem;
     background-color: var(--primario);
     color: var(--blanco);
@@ -196,4 +209,5 @@ input:focus {
 
 .invalid {
     background-color: var(--gris);
-    cursor: default; }
+    cursor: default;
+}
