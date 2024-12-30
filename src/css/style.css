@@ -227,17 +227,6 @@ input:focus {
     h2 { font-size: 1.5rem; margin: 0; }
 }
 
-/* .tarjeta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;    padding: 3rem 1.5rem;
-    border-radius: 2.5rem;
-    color: var(--blanco);
-    box-shadow: 0 1rem 3rem rgb(1 1 1 / 13%);
-}
-
-.tarjeta:active { background-color: var(--primario); } */
-
 .tarjetaContenedor {
     float: left;
     perspective: 800px;
@@ -256,14 +245,14 @@ input:focus {
     transition: transform 0.4s ease 0s;
     width: 100%;
     height: 15rem;
-    -webkit-animation: giro 1s 1;
-    animation: giro 1s 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 2.5rem;
     color: var(--blanco);
     box-shadow: 0 1rem 3rem rgb(1 1 1 / 13%);
+    -webkit-animation: inicio 1s 1;
+    animation: inicio 1s 1;
 }
 
 .front, .back {
@@ -276,7 +265,7 @@ input:focus {
     font-size: 1.2em;
     position: absolute;
     text-align: center;
-    width: min-content;
+    width: 100%;
     height: 100%;
 }
 
@@ -284,21 +273,26 @@ input:focus {
     transform: rotateY( 180deg);
 }
 
-@keyframes giro {
+.tarjetaContenedor:nth-child(1) .tarjeta .back {
+    background: var(--negro);
+    border-radius: 2.5rem;
+}
+
+@keyframes inicio {
     from {
-      transform: rotateY( 180deg);
+        opacity: 0;
     }
     to {
-      transform: rotateY( 0deg);
+        opacity: 1;
     }
 }
   
-@-webkit-keyframes giro {
+@-webkit-keyframes inicio {
     from {
-      transform: rotateY( 180deg);
+        opacity: 0;
     }
     to {
-      transform: rotateY( 0deg);
+        opacity: 1;
     }
 }
 
