@@ -221,20 +221,87 @@ input:focus {
 }
 
 .intercambio {
-    width: fit-content;
-    padding: 3rem 1.5rem;
+    width: 100%;
+    cursor: pointer;
+
+    h2 { font-size: 1.5rem; }
+}
+
+/* .tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    padding: 3rem 1.5rem;
     border-radius: 2.5rem;
     color: var(--blanco);
     box-shadow: 0 1rem 3rem rgb(1 1 1 / 13%);
-    cursor: pointer;
 }
 
-.intercambio:active { background-color: var(--primario); }
+.tarjeta:active { background-color: var(--primario); } */
+
+.tarjetaContenedor {
+    float: left;
+    perspective: 800px;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+}
+
+.tarjetaContenedor:hover .tarjeta {
+    transform: rotateY(180deg);
+}
 
 .tarjeta {
+    background: var(--secundario);
+    cursor: default;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease 0s;
+    width: 100%;
+    height: 15rem;
+    -webkit-animation: giro 1s 1;
+    animation: giro 1s 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 2.5rem;
+    color: var(--blanco);
+    box-shadow: 0 1rem 3rem rgb(1 1 1 / 13%);
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1.2em;
+    position: absolute;
+    text-align: center;
+}
+
+.front {
+    width: fit-content;
+    height: auto;
+    margin: 6.5rem 0;
+}
+
+.back {
+    margin: 3rem 0;
+    transform: rotateY( 180deg);
+}
+
+@keyframes giro {
+    from {
+      transform: rotateY( 180deg);
+    }
+    to {
+      transform: rotateY( 0deg);
+    }
+}
+  
+@-webkit-keyframes giro {
+    from {
+      transform: rotateY( 180deg);
+    }
+    to {
+      transform: rotateY( 0deg);
+    }
 }
 
 .hidden { display: none; }

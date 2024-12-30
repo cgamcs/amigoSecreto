@@ -222,15 +222,21 @@ function mostrarAsignaciones(asignaciones) {
         tarjeta.classList.add('intercambio');
 
         tarjeta.innerHTML = `
-            <h2>Intercambio</h2>
-            <div class="tarjeta">
-                <p>${asignacion.da}</p>
-                <svg xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5"> 
-                    <path d="M12 11v10"></path> 
-                    <path d="M9 18l3 3l3 -3"></path> 
-                    <path d="M12 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path> 
-                </svg> 
-                <p>${asignacion.recibe}</p>
+            <div class="tarjetaContenedor">
+                <div class="tarjeta">
+                    <div class="front">
+                        <h2>Intercambio de ${asignacion.da}</h2>
+                    </div>
+                    <div class="back">
+                        <p>${asignacion.da}</p>
+                        <svg xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5"> 
+                            <path d="M12 11v10"></path> 
+                            <path d="M9 18l3 3l3 -3"></path> 
+                            <path d="M12 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path> 
+                        </svg> 
+                        <p>${asignacion.recibe}</p>
+                    </div>
+                </div>
             </div>
         `;
 
