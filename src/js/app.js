@@ -13,7 +13,8 @@ let participantes = [];
 cargarEvenetListeners();
 function cargarEvenetListeners() {
     continuar.addEventListener('click', guardarModerador);
-    participanteContenedor.addEventListener('input', verificarUltimoInput);
+
+    participanteContenedor.addEventListener('input', verificarUltimoInput)
 
     participantesTarjeta.addEventListener('click', e => {
         if(e.target.closest('.svg')) {
@@ -208,8 +209,12 @@ function mostrarAsignaciones(asignaciones) {
 
     // Iteramos sobre las asignaciones y creamos una tarjeta para cada una
     asignaciones.forEach(asignacion => {
+        // Genera id unico para cada tarjeta
+        const id = Math.random().toString(36).substring(2) + Date.now()
+
         const tarjeta = document.createElement('DIV');
         tarjeta.classList.add('intercambio');
+        tarjeta.setAttribute('id', id)
 
         tarjeta.innerHTML = `
             <div class="tarjetaContenedor">
@@ -234,3 +239,4 @@ function mostrarAsignaciones(asignaciones) {
         resultadoDiv.appendChild(tarjeta);
     });
 }
+

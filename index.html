@@ -41,40 +41,5 @@
     </main>
 
     <script src="/src/js/app.js"></script>
-
-    <script>
-        // Detectar si es un dispositivo móvil
-        function isMobile() {
-            return (
-                /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                (window.matchMedia && window.matchMedia("(max-width: 768px)").matches)
-            );
-        }
-
-        if (isMobile()) {
-            var input = document.querySelector("input");
-            var screen = document.querySelector(".screen");
-            var keyboard = document.querySelector(".keyboard");
-
-            input.addEventListener("click", function () {
-            const elPos = input.getBoundingClientRect().top;
-            const scrollPos = screen.scrollTop;
-
-            // Ajustar el scroll para que el input sea visible
-            if (elPos + input.offsetHeight > screen.offsetHeight / 2) {
-                screen.scrollTo({
-                top: scrollPos + elPos - screen.offsetHeight / 2 + 20,
-                behavior: "smooth",
-                });
-            }
-
-            keyboard.classList.toggle("show");
-            });
-
-            keyboard.addEventListener("click", function () {
-            keyboard.classList.toggle("show");
-            });
-        }
-    </script>
 </body>
 </html>
