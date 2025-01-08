@@ -209,12 +209,8 @@ function mostrarAsignaciones(asignaciones) {
 
     // Iteramos sobre las asignaciones y creamos una tarjeta para cada una
     asignaciones.forEach(asignacion => {
-        // Genera id unico para cada tarjeta
-        const id = Math.random().toString(36).substring(2) + Date.now()
-
         const tarjeta = document.createElement('DIV');
         tarjeta.classList.add('intercambio');
-        tarjeta.setAttribute('id', id)
 
         tarjeta.innerHTML = `
             <div class="tarjetaContenedor">
@@ -235,8 +231,19 @@ function mostrarAsignaciones(asignaciones) {
             </div>
         `;
 
+        tarjeta.onclick = function() {
+            const tarjetaDiv = tarjeta.querySelector('.tarjeta')
+
+            if(tarjetaDiv.classList.contains('vuelta')) {
+                tarjetaDiv.classList.remove('vuelta')
+            } else {
+                tarjetaDiv.classList.add('vuelta')
+            }
+        }
+
         // Agregar la tarjeta al contenedor de resultados
         resultadoDiv.appendChild(tarjeta);
     });
 }
+
 

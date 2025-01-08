@@ -261,7 +261,7 @@ input:focus {
     width: 100%;
 }
 
-.tarjetaContenedor:hover .tarjeta {
+.vuelta{
     transform: rotateY(180deg);
 }
 
